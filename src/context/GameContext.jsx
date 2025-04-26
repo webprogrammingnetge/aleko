@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState } from "react";
 
-const GameContext = createContext();
+export const GameContext = createContext(); // აქ უნდა იყოს export
 
 export const GameProvider = ({ children }) => {
   const [gameState, setGameState] = useState(null);
@@ -19,3 +19,4 @@ export const GameProvider = ({ children }) => {
 };
 
 export const useGameContext = () => useContext(GameContext);
+

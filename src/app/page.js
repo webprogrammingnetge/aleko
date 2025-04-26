@@ -31,13 +31,13 @@ const HomePage = () => {
       {!user ? (
         <div className="flex flex-col gap-4">
           <button
-            onClick={handleLogin}
+            onClick={handleGoLogin}
             className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-md"
           >
             შესვლა
           </button>
           <button
-            onClick={handleRegister}
+            onClick={handleGoRegister}
             className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-md"
           >
             რეგისტრაცია
