@@ -2,17 +2,20 @@
 
 import { createContext, useContext, useState, useEffect } from "react";
 import Cookies from "js-cookie";
+import {apiPost} from '../services/api'
 
 export const AuthContext = createContext();
 
-export const AuthProvider = ({ children }) => {
+export const AuthProvider =  ({ children }) => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
     const userId = Cookies.get("userId");
     const username = Cookies.get("username");
+    
 
     if (userId && username) {
+      
       setUser({ userId, username });
     }
   }, []);
