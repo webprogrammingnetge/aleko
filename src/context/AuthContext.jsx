@@ -21,6 +21,7 @@ export const AuthProvider =  ({ children }) => {
   }, []);
 
   const login = (userId, username, remember) => {
+    console.log(userId, username, remember)
     const options = remember ? { expires: 7 } : undefined;
     Cookies.set("userId", userId, options);
     Cookies.set("username", username, options);

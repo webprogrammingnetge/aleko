@@ -1,6 +1,8 @@
 import "./globals.css";
 import { AuthProvider } from "../context/AuthContext";
 import { GameProvider } from "../context/GameContext";
+import DetectIncognito from "../components/DetectIncognito";
+import Header from "../components/Layout/Header";
 
 export const metadata = {
   title: "ბურთების თამაში",
@@ -13,6 +15,8 @@ export default function RootLayout({ children }) {
       <body>
         <AuthProvider>
           <GameProvider>
+            <DetectIncognito />
+            <Header />  {/* საიტის თავში მენიუ */}
             {children}
           </GameProvider>
         </AuthProvider>

@@ -10,8 +10,8 @@ const LoginForm = () => {
   const router = useRouter();
 
   const [username, setUsername] = useState("");
-  const [ps, setPs] = useState("");
   const [remember, setRemember] = useState(false);
+  const [ps, setPs] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
@@ -23,7 +23,7 @@ const LoginForm = () => {
       return;
     }
 
-    if (ps.length < 6) {
+    if (ps.length < 4) {
       setMessage("⚠️ პაროლი უნდა იყოს მინიმუმ 6 სიმბოლო.");
       return;
     }
@@ -32,11 +32,12 @@ const LoginForm = () => {
     setMessage("");
 
     try {
-      const data = await apiPost("/api/auth/login.php", { username, ps });
-
+      const data = await apiPost("/api/auth/lg.php", { username, ps });
+console.log(data)
       if (data.success) {
-        login(data.userId, data.username, remember);
-        router.push("/create-game"); // წარმატებით შესვლის შემდეგ გადაგდოს თამაშის შექმნაზე
+        // ვიწყებთ session-ის მართვას — შეგვიძლია უბრალოდ აღვნიშნოთ რომ შესულია
+        login(data.userId,data.username,remember);
+        router.push("/create-game"); // წარმატებით შესვლის შემდეგ თამაშის შექმნაზე გადაგდოს
       } else {
         setMessage(`❌ ${data.message}`);
       }
@@ -65,14 +66,13 @@ const LoginForm = () => {
           value={ps}
           onChange={(e) => setPs(e.target.value)}
         />
-        <label className="flex items-center gap-2 text-sm">
-          <input
-            type="checkbox"
-            checked={remember}
-            onChange={(e) => setRemember(e.target.checked)}
-          />
-          დამახსოვრება
-        </label>
+        <input
+          type="checkbox"
+          className="border p-3 rounded-md"
+          value='1'
+          id="remember"
+          onChange={(e) => setRemember(e.target.checked)}
+          /><label htmlFor="remember">დამახსოვრება</label>
         <button
           type="submit"
           disabled={loading}
