@@ -1,7 +1,7 @@
 "use client";
 import { useAuth } from "../hooks/useAuth"; // აქ ვერ გამოვიყენებთ პირდაპირ, სხვა გზა უნდა მოვძებნოთ
 // ან apiGet/apiPost გამოვიდეს კომპონენტიდან სადაც გვაქვს access
-const BASE_URL ='https://webprogramming.net.ge/'; //process.env.NEXT_PUBLIC_DEFURL || "http://localhost:3000"; 
+const BASE_URL ='https://webprogramming.net.ge'; //process.env.NEXT_PUBLIC_DEFURL || "http://localhost:3000"; 
 console.log("ენვ ცვლადები:", process.env);
 console.log("DEFURL:", process.env.NEXT_PUBLIC_DEFURL,BASE_URL);
 export const apiPost = async (endpoint, body) => {
